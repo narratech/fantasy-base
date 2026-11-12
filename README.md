@@ -286,7 +286,7 @@ En el apartado de posproducción se pueden detallar las pruebas. Además del pro
 
 ## Referencias
 Aquí se deben añadir las referencias en formato APA a los apuntes, al enunciado, a videotutoriales o páginas de documentación de Unreal Engine, a videojuego similares, etc. que se hayan utilizado:
-- StylArts. (s.f.). *Stylized Fantasy Provencal* [Recurso de software de 3D]. Fab. Recuperado el 12 de noviembre de 2026, de https://www.fab.com/listings/ced19ea1-31ed-437f-ae64-2b6b1561fede
 - Narratech. (s.f.). *Aprendiz de brujo*. Desarrollo de videojuegos. Recuperado el 12 de noviembre de 2026, de https://narratech.com/es/desarrollo-de-videojuegos/contenido/aprendiz-de-brujo/
+- StylArts. (s.f.). *Stylized Fantasy Provencal* [Recurso de software de 3D]. Fab. Recuperado el 12 de noviembre de 2026, de https://www.fab.com/listings/ced19ea1-31ed-437f-ae64-2b6b1561fede
 - ...
 
