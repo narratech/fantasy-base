@@ -266,19 +266,19 @@ Las clases principales a desarrollar son las del siguiente diagrama.
 classDiagram
   Actor <|-- Pawn
   Pawn <|-- Character
-  Character <|-- ContestantCharacter
+  Character <|-- Sorcerer
 
-  Actor <|-- Baldosa
+  Actor <|-- MagicTile
   Actor <|-- Barrel 
   Actor <|-- DamagingTree
   Actor <|-- DamagingRock
-  Actor <|-- CarroReparable
-  Actor <|-- Molino
+  Actor <|-- RepairableCart
+  Actor <|-- Windmill
   Actor <|-- Flour
   Actor <|-- BarrelKillplane
   Actor <|-- InvisibleWall
-  Pawn <|-- CarroConducible
-  Pawn <|-- RuedaMagica
+  Pawn <|-- DrivableCart
+  Pawn <|-- MagicWheel
 ```
 
 ## Posproducción
