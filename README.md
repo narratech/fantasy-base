@@ -1,16 +1,16 @@
 # Fantasy Base
-Proyecto para desarrollar videojuegos de magia y fantasía en vista cenital y con control de ratón.
+Proyecto de Unreal Engine 5.8.4 que puede servir como punto de partida para desarrollar videojuegos 3D para PC de temática mágica y fantástica, en vista cenital y con un personaje controlado mediante el ratón que es capaz de moverse e interactuar con el entorno para resolver puzles.
 
 ## Descripción
-Se trata de un prototipo básico para montar videojuegos 3D en vista cenital y con control de razón de género de puzles para Unreal Engine 5.8.4. Se podría definir el código para controlar a un personaje que realice tareas domésticas, usando la magia, en el escenario.
+Escenarios de poblados estilizados por donde podemos mover a un androide.  
 
 ## Punto de partida
-El punto de partida de este proyecto es la plantilla TopDown sin variantes, aunque ahora se ha borrado código algo básico; además se usa contenido de distintos paquetes como StylizedProvincial. 
+El punto de partida de este proyecto es la plantilla TopDown de Unreal Engine, sin variantes, aunque ahora se ha borrado parte del código. También se incluyen tres mapas creados con los recursos del paquete gratuito StylizedProvencal. 
 
 ## Instalación y uso
 Los ficheros más importantes del proyecto están disponible en este repositorio, aunque algunos ficheros binarios potencialmente grandes están en el almacén GitHub LFS asociado, y por lo tanto se requiere tener activa la extensión Git LFS cuando lo descarguemos con GitHub Desktop o similar. 
 
-El resto de los ficheros, generalmente de contenido muy pesado o creado por terceros y sin intención de ser modificado en este proyecto, tendrá que descargarse de carpetas compartidas en Google Drive con ficheros ZIP, para después descomprirlos directamente en la carpeta Content. Bastante contenido común a todos los proyectos (StarterContent, LevelPrototyping, ThirdPerson, etc.) está [disponible con acceso general aquí](https://drive.google.com/drive/u/0/folders/1TfoB5S3yQw49-onoFfn0q79PTfk2RoSE) para su descarga.
+El resto de los ficheros, generalmente de contenido muy pesado o creado por terceros y sin intención de ser modificado en este proyecto, tendrá que descargarse de carpetas compartidas en Google Drive con ficheros ZIP, para después descomprirlos directamente en la carpeta Content. Bastante contenido común a todos los proyectos (StarterContent, LevelPrototyping, etc.) está [disponible con acceso general aquí](https://drive.google.com/drive/u/0/folders/1TfoB5S3yQw49-onoFfn0q79PTfk2RoSE) para su descarga.
 
 Para este proyecto en particular hace falta descargar los ficheros ZIP, que ya incluyen las carpetas del mismo nombre, para descomprimirlas directamente en Content: 
 * Characters
@@ -22,19 +22,19 @@ Para este proyecto en particular hace falta descargar los ficheros ZIP, que ya i
 
 Para facilitar esta descarga podemos crear un fichero de PowerShell que haga ese trabajo con nosotros: en bucle empezar a descargar uno a uno los ficheros ZIP del contenido, a través del ID público de las carpetas compartidas en Google Drive y si no hay carpetas ya con esos nombres dentro de Content, luego descomprimir y volcar cada uno de ellos en la carpeta Content, destruyéndo el fichero ZIP antes de descargar el siguiente. Hay que recordar que los archivos descomprimidos de cada zip deben estar en una única carpeta con el nombre del fichero zip como subcarpeta de Content.
 
-
 ## Preproducción
-
-El diseño tiene estas secciones:
+En este apartado de preproducción se desglosa el diseño de este prototipo, siguiendo estas secciones: 
 - [Estética](#Estética)
-  * [Gráficos](#Gráficos)
-  * [Sonidos](#Sonidos)
+  * [Visual](#Visual)
+  * [Sonora](#Sonora)
 - [Dinámica](#Dinámica)
-  * [Objetivo](#Objetivo)
-  * [Castigo](#Derrota)
+  * [Objetivos](#Objetivos)
+  * [Conflictos](#Conflictos)
+  * [Refuerzos](#Refuerzos)
+  * [Castigos](#Castigos)
 - [Mecánica](#Mecánica)
   * [Avatar](#Avatar)
-  * [Baldosas](#Baldosas)
+  * [Baldosas mágicas](#Baldosas)
   * [Hechizo de levitación](#Hechizodelevitación)
   * [Hechizo de propulsión](#Hechizodepropulsión)
   * [Hechizo de conducción](#Hechizodeconducción)
@@ -49,14 +49,13 @@ El diseño tiene estas secciones:
   * [Zona 2: Caserón](#Zona-2)
   * [Zona 3: Cima del monte](#Zona-3)
 
-
 ### Estética
 El juego usa Unreal Engine 5.8 y parte del contenido de la plantilla Top Down, además de los paquetes Characters, LevelPrototiping, StarterContent y StylizedProvencal.
 
-#### Gráficos
+#### Visual
 El juego usa solamente el contenido de la plantilla Top Down y el de principiantes.
 
-#### Sonidos
+#### Sonora
 No hay música ambiente ni se usan sonidos adicionales.
 
 ### Dinámica
@@ -75,14 +74,17 @@ stateDiagram
     Victoria --> Inicio
 ```
 
-#### Objetivo
+#### Objetivos
+
+#### Conflictos
+
+#### Refuerzos
+
+#### Castigos
 
 
-#### Castigo
-
-
-### Contenido
-A continuación detallamos el contenido más importante del juego.
+### Mecánica
+A continuación detallamos los sistemas mecánicos más importantes del juego.
 
 #### Avatar
 El clásico maniquí de Unreal Engine que se puede mover e interactuar con el entorno, es el avatar que controla el jugador.
@@ -96,6 +98,7 @@ Hay tres baldosas en el caserón del mago de colores azul, rojo y verde.
 
 -Cian (azul y verde): Hechizo de conducción.
 
+
 #### Hechizo de levitación 
 
 
@@ -105,11 +108,12 @@ Hay tres baldosas en el caserón del mago de colores azul, rojo y verde.
 #### Hechizo de conducción
 
 
-#### Rueda mágica
-Rueda que aparecerá junto al carro en el prado. 
 
 #### Barriles de trigo
 En la cima del monte habrá barriles de trigo. 
+
+#### Rueda mágica
+Rueda que aparecerá junto al carro en el prado. 
 
 ### Árboles y rocas
 Objetos que dañarán a los barriles si colisionan con ellos. Estarán distribuidos por la ladera de la colina por la que se pueden empujar los barriles. 
@@ -265,11 +269,11 @@ classDiagram
   Pawn <|-- RuedaMagica
 ```
 
-## Pruebas
-Además del prototipo ejecutable para descargar, aquí se muestra un video 
+## Posproducción
+En el apartado de posproducción se pueden detallar las pruebas. Además del prototipo ejecutable para descargar, aquí se muestra un video 
 
 ## Referencias
-Aquí se pueden añadir las referencias APA a los apuntes, al enunciado, a algunos tutoriales de Unreal Engine, a videojuego similares, etc.
+Aquí se deben añadir las referencias en formato APA a los apuntes, al enunciado, a videotutoriales o páginas de documentación de Unreal Engine, a videojuego similares, etc. que se hayan utilizado:
 - ...
 - ...
 
