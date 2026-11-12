@@ -92,6 +92,101 @@ A continuación detallamos los sistemas mecánicos más importantes del juego.
 #### Avatar
 El clásico maniquí de Unreal Engine que se puede mover e interactuar con el entorno, es el avatar que controla el jugador.
 
+#### Magia
+
+#### Objetos
+
+#### Vehículos
+
+
+
+### Contenido
+Estos son los diagramas de funcionamiento de las distintas zonas del nivel. 
+
+#### Zona 1: Prado
+
+Posible diagrama:
+
+```mermaid
+graph LR;
+    iniAvatar[Inicio del avatar]-->prado[Prado];
+    prado[Prado]-->puerta[Entrar en la casa];
+    puerta[Entrar en la casa]-->puertaS[Salir de la casa];
+    puertaS[Salir de la casa]-->prado[Prado];
+    puertaS[Salir de la casa]-->hLact[Hechizo de levitación activo];
+    puertaS[Salir de la casa]-->hCact[Hechizo de conducción activo];
+    prado[Prado]-->colina[Subir a la cima del monte];
+    colina[Subir a la cima del monte]-->colinaS[Bajar de la cima del monte];
+    colinaS[Bajar de la cima del monte]-->prado[Prado];
+    hLact[Hechizo de levitación activo]-->repCarr[Reparar carro roto];
+    repCarr[Reparar carro roto]-->carro1[Carro reparado];
+    carro1[Carro reparado]-->prado[Prado];
+    hCact[Hechizo de conducción activo]-->condCarr[Conducir carro cargado];
+    condCarr[Conducir carro cargado]-->molino[Llegar al molino];
+    condCarr[Conducir carro cargado]-->salCam[Salirse del camino, recibiendo daño];
+    salCam[Salirse del camino, recibiendo daño]-->molino[Llegar al molino];
+    salCam[Salirse del camino, recibiendo daño]-->carrDest[Carro destruido];
+    carrDest[Carro destruido]-->carro1[Carro reparado];
+    molino[Llegar al molino]-->victoria[Victoria];
+    victoria[Victoria]-->prado[Prado];
+```
+
+#### Zona 2: Caserón
+
+Posible diagrama:
+
+```mermaid
+graph LR;
+    puerta[Entrar en la casa]-->actAzul[Activar baldosa azul];
+    puerta[Entrar en la casa]-->actRoja[Activar baldosa roja];
+    puerta[Entrar en la casa]-->actVerde[Activar baldosa verde];
+    actAzul[Activar baldosa azul]-->combAct[Activar combinación de luces];
+    actRoja[Activar baldosa roja]-->combAct[Activar combinación de luces];
+    actVerde[Activar baldosa verde]-->combAct[Activar combinación de luces];
+    combAct[Activar combinación de luces]-->hLact[Hechizo de levitación activo];
+    combAct[Activar combinación de luces]-->hPact[Hechizo de propulsión activo];
+    combAct[Activar combinación de luces]-->hCact[Hechizo de conducción activo];
+    actAzul[Activar baldosa azul]-->dactAzul[Desactivar baldosa azul];
+    actRoja[Activar baldosa roja]--> dactRoja[Desactivar baldosa roja];
+    actVerde[Activar baldosa verde]--> dactVerde[Desactivar baldosa verde];
+    dactAzul[Desactivar baldosa azul]-->combAct[Activar combinación de luces];
+    dactRoja[Desactivar baldosa roja]-->combAct[Activar combinación de luces];
+    dactVerde[Desactivar baldosa verde]-->combAct[Activar combinación de luces];
+    dactAzul[Desactivar baldosa azul]-->actAzul[Activar baldosa azul];
+    dactRoja[Desactivar baldosa roja]-->actRoja[Activar baldosa roja];
+    dactVerde[Desactivar baldosa verde]-->actVerde[Activar baldosa verde];
+    puerta[Entrar en la casa]-->puertaS[Salir de la casa];
+    combAct[Activar combinación de luces]-->puertaS[Salir de la casa];
+    hLact[Hechizo de levitación activo]-->puertaS[Salir de la casa];
+    hPact[Hechizo de propulsión activo]-->puertaS[Salir de la casa];
+    hCact[Hechizo de conducción activo]-->puertaS[Salir de la casa];
+    puerta[Entrar en la casa]-->reiniciar[Reiniciar progreso];
+    reiniciar[Reiniciar progreso]-->puertaS[Salir de la casa];
+```
+
+#### Zona 3: Cima del monte
+
+Posible diagrama:
+
+```mermaid
+graph LR;
+     colina[Subir a la cima del monte]-->colinaS[Bajar de la cima del monte];
+     colina[Subir a la cima del monte]-->hPact[Hechizo de propulsión activo];
+     hPact[Hechizo de propulsión activo]-->empujarbarril[Empujar barril];
+     empujarbarril[Empujar barril]-->danho[El barril se choca con árboles o rocas, recibiendo daño];
+     empujarbarril[Empujar barril]-->killplane[El barril se cae por fuera de la ladera o fuera de la cámara];
+     empujarbarril[Empujar barril]-->exito[El barril llega al carro];
+     empujarbarril[Empujar barril]-->colinaS[Bajar de la cima del monte];
+     danho[El barril se choca con árboles o rocas, recibiendo daño]-->barrilDest[Barril destruido];
+     danho[El barril se choca con árboles o rocas, recibiendo daño]-->exito[El barril llega al carro];
+     killplane[El barril se cae por fuera de la ladera o fuera de la cámara]-->barrilDest[Barril destruido];
+     barrilDest[Barril destruido]-->barrilReap[Barril reaparece];
+     barrilReap[Barril reaparece]-->empujarbarril[Empujar barril];
+     exito[El barril llega al carro]-->carrCarg[Carro cargado];
+     carrCarg[Carro cargado]-->colinaS[Bajar de la cima del monte];
+```
+
+
 #### Baldosas mágicas
 Hay tres baldosas en el caserón del mago de colores azul, rojo y verde. 
 
@@ -140,92 +235,6 @@ Si se alcanza el molino con el carro reparado y cargado, se gana y se termina el
 
 #### Ánforas de harina
 Las ánforas de harina de la casa del mago, que se obtienen al completar el juego y persisten entre partidas. 
-
-### Contenido
-Estos son los diagramas de funcionamiento de las distintas zonas del nivel. 
-
-#### Zona-1 : Prado
-
-Posible diagrama:
-
-```mermaid
-graph LR;
-    iniAvatar[Inicio del avatar]-->prado[Prado];
-    prado[Prado]-->puerta[Entrar en la casa];
-    puerta[Entrar en la casa]-->puertaS[Salir de la casa];
-    puertaS[Salir de la casa]-->prado[Prado];
-    puertaS[Salir de la casa]-->hLact[Hechizo de levitación activo];
-    puertaS[Salir de la casa]-->hCact[Hechizo de conducción activo];
-    prado[Prado]-->colina[Subir a la cima del monte];
-    colina[Subir a la cima del monte]-->colinaS[Bajar de la cima del monte];
-    colinaS[Bajar de la cima del monte]-->prado[Prado];
-    hLact[Hechizo de levitación activo]-->repCarr[Reparar carro roto];
-    repCarr[Reparar carro roto]-->carro1[Carro reparado];
-    carro1[Carro reparado]-->prado[Prado];
-    hCact[Hechizo de conducción activo]-->condCarr[Conducir carro cargado];
-    condCarr[Conducir carro cargado]-->molino[Llegar al molino];
-    condCarr[Conducir carro cargado]-->salCam[Salirse del camino, recibiendo daño];
-    salCam[Salirse del camino, recibiendo daño]-->molino[Llegar al molino];
-    salCam[Salirse del camino, recibiendo daño]-->carrDest[Carro destruido];
-    carrDest[Carro destruido]-->carro1[Carro reparado];
-    molino[Llegar al molino]-->victoria[Victoria];
-    victoria[Victoria]-->prado[Prado];
-```
-
-#### Zona-2 : Caserón
-
-Posible diagrama:
-
-```mermaid
-graph LR;
-    puerta[Entrar en la casa]-->actAzul[Activar baldosa azul];
-    puerta[Entrar en la casa]-->actRoja[Activar baldosa roja];
-    puerta[Entrar en la casa]-->actVerde[Activar baldosa verde];
-    actAzul[Activar baldosa azul]-->combAct[Activar combinación de luces];
-    actRoja[Activar baldosa roja]-->combAct[Activar combinación de luces];
-    actVerde[Activar baldosa verde]-->combAct[Activar combinación de luces];
-    combAct[Activar combinación de luces]-->hLact[Hechizo de levitación activo];
-    combAct[Activar combinación de luces]-->hPact[Hechizo de propulsión activo];
-    combAct[Activar combinación de luces]-->hCact[Hechizo de conducción activo];
-    actAzul[Activar baldosa azul]-->dactAzul[Desactivar baldosa azul];
-    actRoja[Activar baldosa roja]--> dactRoja[Desactivar baldosa roja];
-    actVerde[Activar baldosa verde]--> dactVerde[Desactivar baldosa verde];
-    dactAzul[Desactivar baldosa azul]-->combAct[Activar combinación de luces];
-    dactRoja[Desactivar baldosa roja]-->combAct[Activar combinación de luces];
-    dactVerde[Desactivar baldosa verde]-->combAct[Activar combinación de luces];
-    dactAzul[Desactivar baldosa azul]-->actAzul[Activar baldosa azul];
-    dactRoja[Desactivar baldosa roja]-->actRoja[Activar baldosa roja];
-    dactVerde[Desactivar baldosa verde]-->actVerde[Activar baldosa verde];
-    puerta[Entrar en la casa]-->puertaS[Salir de la casa];
-    combAct[Activar combinación de luces]-->puertaS[Salir de la casa];
-    hLact[Hechizo de levitación activo]-->puertaS[Salir de la casa];
-    hPact[Hechizo de propulsión activo]-->puertaS[Salir de la casa];
-    hCact[Hechizo de conducción activo]-->puertaS[Salir de la casa];
-    puerta[Entrar en la casa]-->reiniciar[Reiniciar progreso];
-    reiniciar[Reiniciar progreso]-->puertaS[Salir de la casa];
-```
-
-#### Zona-3 : Cima del monte
-
-Posible diagrama:
-
-```mermaid
-graph LR;
-     colina[Subir a la cima del monte]-->colinaS[Bajar de la cima del monte];
-     colina[Subir a la cima del monte]-->hPact[Hechizo de propulsión activo];
-     hPact[Hechizo de propulsión activo]-->empujarbarril[Empujar barril];
-     empujarbarril[Empujar barril]-->danho[El barril se choca con árboles o rocas, recibiendo daño];
-     empujarbarril[Empujar barril]-->killplane[El barril se cae por fuera de la ladera o fuera de la cámara];
-     empujarbarril[Empujar barril]-->exito[El barril llega al carro];
-     empujarbarril[Empujar barril]-->colinaS[Bajar de la cima del monte];
-     danho[El barril se choca con árboles o rocas, recibiendo daño]-->barrilDest[Barril destruido];
-     danho[El barril se choca con árboles o rocas, recibiendo daño]-->exito[El barril llega al carro];
-     killplane[El barril se cae por fuera de la ladera o fuera de la cámara]-->barrilDest[Barril destruido];
-     barrilDest[Barril destruido]-->barrilReap[Barril reaparece];
-     barrilReap[Barril reaparece]-->empujarbarril[Empujar barril];
-     exito[El barril llega al carro]-->carrCarg[Carro cargado];
-     carrCarg[Carro cargado]-->colinaS[Bajar de la cima del monte];
-```
 
 
 ## Producción
@@ -277,6 +286,7 @@ En el apartado de posproducción se pueden detallar las pruebas. Además del pro
 
 ## Referencias
 Aquí se deben añadir las referencias en formato APA a los apuntes, al enunciado, a videotutoriales o páginas de documentación de Unreal Engine, a videojuego similares, etc. que se hayan utilizado:
-- ...
+- StylArts. (s.f.). *Stylized Fantasy Provencal* [Recurso de software de 3D]. Fab. Recuperado el 12 de noviembre de 2026, de https://www.fab.com/listings/ced19ea1-31ed-437f-ae64-2b6b1561fede
+- Narratech. (s.f.). *Aprendiz de brujo*. Desarrollo de videojuegos. Recuperado el 12 de noviembre de 2026, de https://narratech.com/es/desarrollo-de-videojuegos/contenido/aprendiz-de-brujo/
 - ...
 
